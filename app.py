@@ -21,8 +21,17 @@ def get_table():
                 "Coppia"]
             df=pd.DataFrame(columns=column_names)
         return df
+@app.route('/api/get_data', methods=['GET'])
+def get_data():
+    try:
+        with open(f"src/data/users/{current_user}/brawl_data.json") as file:
+            brawl_data = json.load(file)
+        return jsonify({"data": brawl_data, "message": f"Successfully imported {current_user} data"}), 200
+    except Exception as e:
+        print(e)
+        return jsonify({"message": str(e)})
 
-
+    
 with open("src/data/gadgets_list.json") as file:
     gadgets_data = json.load(file)
 with open("src/data/starpowers_list.json") as file:
@@ -81,15 +90,15 @@ def edit_row():
     try:
         # Leggi il nuovo record JSON in input dalla richiesta POST
         req = request.get_json(force=True)
-        to_edit = req["row"]
-        new_value = req["new_value"]
+        to_edit = req["row_index"] #indice della riga da cambiare
+        new_value = req["new_value"] #nuovo valore da attribuire
+        #converto in df
         new_row = pd.DataFrame(new_value, index=[0]).reset_index(drop=True)
-
-        # modifica
-        df.loc[to_edit, :] = new_row
-
-        # Salva il DataFrame aggiornato in brawl_data.json
-        df.T.to_json("src/data/brawl_data.json", indent=2)
+        #metto l'indice da cambiare (forse si puo togliere questo passaggio)
+        new_row.index = [to_edit]
+        #sostituisco la riga
+        df.loc[to_edit, :] = new_row.loc[to_edit, :]
+        #salvo master e cambio anche il file dell'utente
         master_file = os.path.join("src", "data", "brawl_data.json")
         base_dir = os.path.join("src","data", "users")
         user_file = os.path.join(base_dir, current_user, "brawl_data.json")
