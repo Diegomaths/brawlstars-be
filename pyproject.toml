@@ -1,16 +1,16 @@
 [tool.poetry]
-name = "brawlstars"
+name = "brawlstars-be"
 version = "0.1.0"
 description = ""
-authors = ["Marika Fabiani <marikafabiani63@gmail.com>"]
+authors = ["Diegomaths <diegobellazzi@gmail.com>"]
 readme = "README.md"
 packages = [{include = "poetry_demo"}]
 
 [tool.poetry.dependencies]
-python = "3.9.7"
-pandas = "1.5.1"
-requests = "2.28.0"
-flask = "2.2.3"
+python = "3.11.4"
+pandas = "2.0.3"
+requests = "2.31.0"
+flask = "2.3.2"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
