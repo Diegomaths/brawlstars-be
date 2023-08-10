@@ -1,1 +1,1 @@
-web: python get_data.py && web: gunicorn app:app
+web: gunicorn app:app

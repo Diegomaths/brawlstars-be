@@ -6,7 +6,17 @@ import requests
 import os
 import shutil
 from flask import Flask, jsonify, request
+import subprocess
 app = Flask(__name__)
+
+def run_get_data():
+    try:
+        subprocess.run(["python", "get_data.py"], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        return "Script get_data.py eseguito con successo!"
+    except subprocess.CalledProcessError as e:
+        return f"Errore durante l'esecuzione di get_data.py: {e.stderr.decode()}"
+
+
 def get_table():
     with open("data/users/{current_user}/brawl_data.json") as file:
         try:
@@ -123,6 +133,7 @@ def get_mods_maps_list():
 # dati per utente
 @app.route('/api/v1/get_user', methods=['POST'])
 def get_user():
+    run_get_data()
     try:
         # Leggi il nuovo record JSON in input dalla richiesta POST
         user = request.get_json(force=True)
