@@ -6,8 +6,10 @@ import requests
 import os
 import shutil
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 import subprocess
 app = Flask(__name__)
+CORS(app)
 
 def run_get_data():
     try:
@@ -133,10 +135,13 @@ def get_mods_maps_list():
 # dati per utente
 @app.route('/api/v1/get_user', methods=['POST'])
 def get_user():
+    print(0)
     run_get_data()
     try:
+        print(1)
         # Leggi il nuovo record JSON in input dalla richiesta POST
         user = request.get_json(force=True)
+        print(user)
         global current_user
         current_user = user
         base_dir = os.path.join("data", "users")
@@ -145,6 +150,7 @@ def get_user():
         result = f"User {user} data"
         master_file = os.path.join( "data", "brawl_data.json")
         if user in last_elements:
+            print(2)
             result += " successfully retrieved"
         else:
             new_dir = os.path.join(base_dir, user)
