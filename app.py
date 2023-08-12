@@ -141,8 +141,7 @@ def get_user():
         current_user = user
         base_dir = os.path.join("data", "users")
 
-        users_list = [ f.path for f in os.scandir(base_dir) if f.is_dir() ]
-        last_elements = [string.split("/")[-1] for string in users_list]
+        last_elements = [os.path.basename(f.path) for f in os.scandir(base_dir) if f.is_dir()]
         result = f"User {user} data"
         master_file = os.path.join( "data", "brawl_data.json")
         if user in last_elements:
