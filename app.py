@@ -5,8 +5,21 @@ import pandas as pd
 import requests
 import os
 import shutil
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, Response
+from flask_cors import CORS
+from collections import OrderedDict
+import subprocess
 app = Flask(__name__)
+CORS(app)
+
+def run_get_data():
+    try:
+        subprocess.run(["python", "get_data.py"], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        return "Script get_data.py eseguito con successo!"
+    except subprocess.CalledProcessError as e:
+        return f"Errore durante l'esecuzione di get_data.py: {e.stderr.decode()}"
+
+
 def get_table():
     with open("data/users/{current_user}/brawl_data.json") as file:
         try:
@@ -26,10 +39,14 @@ def get_data():
     try:
         with open(f"data/users/{current_user}/brawl_data.json") as file:
             brawl_data = json.load(file)
-        return jsonify({"data": brawl_data, "message": f"Successfully imported {current_user} data"}), 200
+        json_response = {
+            "data": brawl_data,
+            "message": f"Successfully imported {current_user} data"
+        }
+        return Response(json.dumps(json_response), mimetype='application/json'), 200
     except Exception as e:
         print(e)
-        return jsonify({"message": str(e)})
+        return Response(json.dumps({"message": str(e)}), mimetype='application/json')
 
     
 with open("data/gadgets_list.json") as file:
@@ -40,6 +57,8 @@ with open("data/full_maps_list.json") as file:
     full_maps_data = json.load(file)
 with open("data/mods_maps_list.json") as file:
     mods_maps_data = json.load(file)
+with open("data/brawler_list.json") as file:
+    brawler_list = json.load(file)
 
 
 @app.route('/api/v1/add_row', methods=['POST'])
@@ -119,22 +138,28 @@ def get_full_maps_list():
 def get_mods_maps_list():
     return jsonify(mods_maps_data)
 
+@app.route("/api/v1/brawler_list")
+def get_brawler_list():
+    return jsonify(brawler_list)
+
 
 # dati per utente
 @app.route('/api/v1/get_user', methods=['POST'])
 def get_user():
+    run_get_data()
     try:
         # Leggi il nuovo record JSON in input dalla richiesta POST
         user = request.get_json(force=True)
+        print(user)
         global current_user
         current_user = user
         base_dir = os.path.join("data", "users")
 
-        users_list = [ f.path for f in os.scandir(base_dir) if f.is_dir() ]
-        last_elements = [string.split("/")[-1] for string in users_list]
+        last_elements = [os.path.basename(f.path) for f in os.scandir(base_dir) if f.is_dir()]
         result = f"User {user} data"
         master_file = os.path.join( "data", "brawl_data.json")
         if user in last_elements:
+            print(2)
             result += " successfully retrieved"
         else:
             new_dir = os.path.join(base_dir, user)
