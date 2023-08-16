@@ -1,0 +1,79 @@
+2023-08-16 20:54:15,688 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.162:5000
+2023-08-16 20:54:15,688 - INFO - [33mPress CTRL+C to quit[0m
+2023-08-16 20:54:20,837 - INFO - 127.0.0.1 - - [16/Aug/2023 20:54:20] "[33mGET / HTTP/1.1[0m" 404 -
+2023-08-16 20:54:31,884 - INFO - Getting data from https://api.brawlapi.com/v1/brawlers
+2023-08-16 20:54:32,819 - INFO - Getting data from https://api.brawlapi.com/v1/maps
+2023-08-16 20:54:33,606 - INFO - Data written to JSON file: data/full_maps_list.json
+2023-08-16 20:54:33,614 - INFO - Data written to JSON file: data/mods_maps_list.json
+2023-08-16 20:54:33,707 - INFO - Script get_data.py eseguito con successo!
+2023-08-16 20:54:33,708 - INFO - User user2 data successfully retrieved
+2023-08-16 20:54:33,708 - INFO - 127.0.0.1 - - [16/Aug/2023 20:54:33] "POST /api/v1/get_user HTTP/1.1" 200 -
+2023-08-16 20:57:50,461 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.162:5000
+2023-08-16 20:57:50,461 - INFO - [33mPress CTRL+C to quit[0m
+2023-08-16 20:57:54,293 - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "/home/diego/.cache/pypoetry/virtualenvs/brawlstars-be-cu6p6UEw-py3.11/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/.cache/pypoetry/virtualenvs/brawlstars-be-cu6p6UEw-py3.11/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/.cache/pypoetry/virtualenvs/brawlstars-be-cu6p6UEw-py3.11/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/.cache/pypoetry/virtualenvs/brawlstars-be-cu6p6UEw-py3.11/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/Documents/py/brawlstars-be/app.py", line 44, in index
+    return render_template('index.html', content=content)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/.cache/pypoetry/virtualenvs/brawlstars-be-cu6p6UEw-py3.11/lib/python3.11/site-packages/flask/templating.py", line 150, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/.cache/pypoetry/virtualenvs/brawlstars-be-cu6p6UEw-py3.11/lib/python3.11/site-packages/jinja2/environment.py", line 1081, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/.cache/pypoetry/virtualenvs/brawlstars-be-cu6p6UEw-py3.11/lib/python3.11/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/.cache/pypoetry/virtualenvs/brawlstars-be-cu6p6UEw-py3.11/lib/python3.11/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/.cache/pypoetry/virtualenvs/brawlstars-be-cu6p6UEw-py3.11/lib/python3.11/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/.cache/pypoetry/virtualenvs/brawlstars-be-cu6p6UEw-py3.11/lib/python3.11/site-packages/flask/templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/.cache/pypoetry/virtualenvs/brawlstars-be-cu6p6UEw-py3.11/lib/python3.11/site-packages/flask/templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: index.html
+2023-08-16 20:57:54,300 - INFO - 127.0.0.1 - - [16/Aug/2023 20:57:54] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2023-08-16 20:59:13,896 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.162:5000
+2023-08-16 20:59:13,896 - INFO - [33mPress CTRL+C to quit[0m
+2023-08-16 20:59:17,180 - INFO - 127.0.0.1 - - [16/Aug/2023 20:59:17] "GET / HTTP/1.1" 200 -
+2023-08-16 21:02:12,566 - INFO - Getting data from https://api.brawlapi.com/v1/brawlers
+2023-08-16 21:02:13,248 - INFO - Getting data from https://api.brawlapi.com/v1/maps
+2023-08-16 21:02:13,710 - INFO - Data written to JSON file: data/full_maps_list.json
+2023-08-16 21:02:13,719 - INFO - Data written to JSON file: data/mods_maps_list.json
+2023-08-16 21:02:13,813 - INFO - Script get_data.py successfully run
+2023-08-16 21:02:13,813 - INFO - User user2 data successfully retrieved
+2023-08-16 21:02:13,814 - INFO - 127.0.0.1 - - [16/Aug/2023 21:02:13] "POST /api/v1/get_user HTTP/1.1" 200 -
+2023-08-16 21:02:36,680 - INFO - 127.0.0.1 - - [16/Aug/2023 21:02:36] "[33mGET /api/v1/get_table HTTP/1.1[0m" 404 -
+2023-08-16 21:02:43,314 - INFO - Successfully imported user2 data
+2023-08-16 21:02:43,315 - INFO - 127.0.0.1 - - [16/Aug/2023 21:02:43] "GET /api/v1/get_data HTTP/1.1" 200 -
+2023-08-16 21:03:29,768 - INFO - removed row 38
+2023-08-16 21:03:29,768 - INFO - 127.0.0.1 - - [16/Aug/2023 21:03:29] "POST /api/v1/delete_row HTTP/1.1" 200 -
+2023-08-16 21:04:46,700 - INFO - added row
+2023-08-16 21:04:46,701 - INFO - 127.0.0.1 - - [16/Aug/2023 21:04:46] "POST /api/v1/add_row HTTP/1.1" 200 -
+2023-08-16 21:04:55,260 - INFO - Successfully imported user2 data
+2023-08-16 21:04:55,260 - INFO - 127.0.0.1 - - [16/Aug/2023 21:04:55] "GET /api/v1/get_data HTTP/1.1" 200 -

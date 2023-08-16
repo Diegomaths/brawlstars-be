@@ -5,11 +5,11 @@ import pandas as pd
 import requests
 import os
 import shutil
-from flask import Flask, jsonify, request, Response
+from flask import Flask, jsonify, request, Response, render_template
 from flask_cors import CORS
 from collections import OrderedDict
 import subprocess
-
+import markdown
 import logging
 
 # Set up logging configuration
@@ -32,10 +32,21 @@ logging.getLogger().addHandler(console_handler)
 app = Flask(__name__)
 CORS(app)
 
+
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    with open('README.md', 'r') as markdown_file:
+        content = markdown_file.read()
+        content = markdown.markdown(content, extensions=['markdown.extensions.tables', 'markdown.extensions.fenced_code'])
+        return render_template('index.html', content=content)
+
 def run_get_data():
     try:
         subprocess.run(["python", "get_data.py"], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        out="Script get_data.py eseguito con successo!"
+        out="Script get_data.py successfully run"
         logging.info(out)
         return(out)
     except subprocess.CalledProcessError as e:
@@ -106,10 +117,17 @@ def add_row():
         logging.info("added row")
         return jsonify({"message": "Added row"}), 200
     except Exception as e:
-        print(e)
         logging.error(e)
         return jsonify({"message": str(e)})
-
+#ex
+# {
+    # "Brawler": "TEST",
+    # "Modalita": null,
+    # "Mappa": null,
+    # "Gadget": null,
+    # "Abilita stellare": "Hard Candy",
+    # "Coppia": "Lola"
+#         }
 @app.route('/api/v1/delete_row', methods=['POST'])
 def delete_row():
     df = get_table()
@@ -185,7 +203,7 @@ def get_user():
     try:
         # Leggi il nuovo record JSON in input dalla richiesta POST
         user = request.get_json(force=True)
-        print(user)
+        logging.info(f"Selected user: {user}")
         global current_user
         current_user = user
         base_dir = os.path.join("data", "users")
