@@ -15,4 +15,21 @@ flask_cors = "4.0.0"
 gunicorn = "21.2.0"
 [build-system]
 requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+=======
+[tool.poetry]
+name = "brawlstars-be"
+version = "0.1.0"
+description = ""
+authors = ["Diegomaths <diegobellazzi@gmail.com>"]
+readme = "README.md"
+packages = [{include = "poetry_demo"}]
+
+[tool.poetry.dependencies]
+python = "3.11.4"
+pandas = "2.0.3"
+requests = "2.31.0"
+flask = "2.3.2"
+flask_cors = "4.0.0"
+gunicorn = "21.2.0"
+[build-system]
+requires = ["poetry-core"]
