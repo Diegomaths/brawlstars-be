@@ -21,7 +21,7 @@ def run_get_data():
 
 
 def get_table():
-    with open("data/users/{current_user}/brawl_data.json") as file:
+    with open(f"data/users/{current_user}/brawl_data.json") as file:
         try:
             brawl_data = json.load(file)
             df = pd.DataFrame(brawl_data).T
