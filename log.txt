@@ -1,0 +1,38 @@
+[2023-08-09 01:02:11 +0200] [46552] [INFO] Starting gunicorn 21.2.0
+[2023-08-09 01:02:11 +0200] [46552] [INFO] Listening at: http://0.0.0.0:5000 (46552)
+[2023-08-09 01:02:11 +0200] [46552] [INFO] Using worker: sync
+[2023-08-09 01:02:11 +0200] [46560] [INFO] Booting worker with pid: 46560
+[2023-08-09 01:02:23 +0200] [46552] [INFO] Handling signal: hup
+[2023-08-09 01:02:23 +0200] [46552] [INFO] Hang up: Master
+[2023-08-09 01:02:23 +0200] [46552] [ERROR] Worker (pid:46560) was sent SIGHUP!
+[2023-08-09 01:02:23 +0200] [46552] [INFO] Handling signal: hup
+[2023-08-09 01:02:23 +0200] [46552] [INFO] Hang up: Master
+[2023-08-09 01:02:23 +0200] [46597] [INFO] Booting worker with pid: 46597
+[2023-08-09 01:02:23 +0200] [46598] [INFO] Booting worker with pid: 46598
+[2023-08-09 01:02:24 +0200] [46597] [INFO] Worker exiting (pid: 46597)
+[2023-08-09 01:02:24 +0200] [46552] [ERROR] Worker (pid:46597) exited with code 120
+[2023-08-09 01:02:24 +0200] [46552] [ERROR] Worker (pid:46597) exited with code 120.
+[2023-08-09 01:03:35 +0200] [47094] [INFO] Starting gunicorn 21.2.0
+[2023-08-09 01:03:35 +0200] [47094] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2023-08-09 01:03:35 +0200] [47094] [ERROR] Retrying in 1 second.
+[2023-08-09 01:03:36 +0200] [47094] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2023-08-09 01:03:36 +0200] [47094] [ERROR] Retrying in 1 second.
+[2023-08-09 01:03:37 +0200] [47094] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2023-08-09 01:03:37 +0200] [47094] [ERROR] Retrying in 1 second.
+[2023-08-09 01:03:38 +0200] [47094] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2023-08-09 01:03:38 +0200] [47094] [ERROR] Retrying in 1 second.
+[2023-08-09 01:03:39 +0200] [47094] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2023-08-09 01:03:39 +0200] [47094] [ERROR] Retrying in 1 second.
+[2023-08-09 01:03:40 +0200] [47094] [ERROR] Can't connect to ('0.0.0.0', 5000)
+[2023-08-09 01:04:00 +0200] [47203] [INFO] Starting gunicorn 21.2.0
+[2023-08-09 01:04:00 +0200] [47203] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2023-08-09 01:04:00 +0200] [47203] [ERROR] Retrying in 1 second.
+[2023-08-09 01:04:01 +0200] [47203] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2023-08-09 01:04:01 +0200] [47203] [ERROR] Retrying in 1 second.
+[2023-08-09 01:04:02 +0200] [47203] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2023-08-09 01:04:02 +0200] [47203] [ERROR] Retrying in 1 second.
+[2023-08-09 01:04:03 +0200] [47203] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2023-08-09 01:04:03 +0200] [47203] [ERROR] Retrying in 1 second.
+[2023-08-09 01:04:04 +0200] [47203] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2023-08-09 01:04:04 +0200] [47203] [ERROR] Retrying in 1 second.
+[2023-08-09 01:04:05 +0200] [47203] [ERROR] Can't connect to ('0.0.0.0', 5000)
