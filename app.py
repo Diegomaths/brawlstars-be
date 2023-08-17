@@ -32,10 +32,6 @@ logging.getLogger().addHandler(console_handler)
 app = Flask(__name__)
 CORS(app)
 
-
-
-app = Flask(__name__)
-
 @app.route('/')
 def index():
     with open('README.md', 'r') as markdown_file:
@@ -207,12 +203,9 @@ def get_user():
         global current_user
         current_user = user
         base_dir = os.path.join("data", "users")
-
         last_elements = [os.path.basename(f.path) for f in os.scandir(base_dir) if f.is_dir()]
         result = f"User {user} data"
-        master_file = os.path.join( "data", "brawl_data.json")
         if user in last_elements:
-            print(2)
             result += " successfully retrieved"
         else:
             new_dir = os.path.join(base_dir, user)
@@ -221,16 +214,14 @@ def get_user():
             empty_file = os.path.join( "data", "empty.json")
             shutil.copy(empty_file, user_file)
             result += " successfully created"
+        response = jsonify({"message": result}), 200
         logging.info(result)
-        return jsonify({"message": result}), 200
+        return response
     
     except Exception as e:
         print(e)
         logging.error(e)
         return jsonify({"message": str(e)})
-
-
-
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))

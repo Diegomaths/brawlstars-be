@@ -10,3 +10,6 @@ resources:
   disk_size_gb: 10
 
 entrypoint: gunicorn -b :$PORT app:app
+
+env_variables:
+  FLASK_ENV: production
